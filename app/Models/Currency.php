@@ -13,7 +13,8 @@ class Currency extends Model
      * @var array<int, string>
      */
 
-    //use HasFactory;
+    protected $primaryKey = 'iso';
+    public $incrementing = false;
     protected $fillable = [
         'iso',
     ];
