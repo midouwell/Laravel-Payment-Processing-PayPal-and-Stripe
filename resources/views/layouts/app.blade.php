@@ -18,6 +18,7 @@
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    @stack('styles')
 
 </head>
 <body>
@@ -79,6 +80,31 @@
         </nav>
 
         <main class="py-4">
+            <div class="container">
+                    @if (@isset($errors) && $errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                     @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            <ul>
+                                @foreach (session()->get('success') as $message)
+                                    <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+            </div>
+
             @yield('content')
         </main>
     </div>
@@ -86,7 +112,9 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <!-- Bootstrap JS -->
         <!-- Bootstrap 5 Bundle JS (Popper inclus) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        @stack('scripts')
 
 </body>
 </html>
