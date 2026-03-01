@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Currency;
-use App\Models\PaymentPlatform;
+use App\Currency;
+use App\PaymentPlatform;
 
 class HomeController extends Controller
 {
