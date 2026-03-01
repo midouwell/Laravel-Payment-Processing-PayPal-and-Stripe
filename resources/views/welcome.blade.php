@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"> Welcom!</div>
+                <div class="card-header">Welcome!</div>
 
                 <div class="card-body">
-                    This is the welcome page. You can navigate to the payment page to test the PayPal and Stripe payment processing.
+                    This is a payments processing system, using the most popular payment platforms available.
                 </div>
             </div>
         </div>
