@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +14,27 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::post('/payments/pay', 'PaymentController@pay')->name('pay');
 Route::get('/payments/approval', 'PaymentController@approval')->name('approval');
 Route::get('/payments/cancelled', 'PaymentController@cancelled')->name('cancelled');
+
+Route::prefix('subscribe')
+    ->name('subscribe.')
+    ->group(function () {
+        Route::get('/', 'SubscriptionController@show')
+            ->name('show');
+
+        Route::post('/', 'SubscriptionController@store')
+            ->name('store');
+
+        Route::get('/approval', 'SubscriptionController@approval')
+            ->name('approval');
+
+        Route::get('/cancelled', 'SubscriptionController@cancelled')
+            ->name('cancelled');
+    });
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
