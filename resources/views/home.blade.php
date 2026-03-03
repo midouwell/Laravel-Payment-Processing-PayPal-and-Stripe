@@ -5,28 +5,27 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Make a payment') }}</div>
+                <div class="card-header">Make a payment</div>
 
                 <div class="card-body">
-
-                    <form method="POST" action="#" id="paymentForm">
+                    <form action="{{ route('pay') }}" method="POST" id="paymentForm">
                         @csrf
-
                         <div class="row">
-                           <div class="col-auto">
-                              <label>Amount:</label>
-                              <input type="number"
-                                        name="value"
-                                        id="value"
-                                        min="5"
-                                        step="0.01"
-                                        class="form-control"
-                                        value="{{ mt_rand(5000, 100000)/100 }}"
+                            <div class="col-auto">
+                                <label>How much you want to pay?</label>
+                                <input
+                                    type="number"
+                                    min="5"
+                                    step="0.01"
+                                    class="form-control"
+                                    name="value"
+                                    value="{{ mt_rand(500, 100000) / 100 }}"
+                                    required
                                 >
-                                 <small class="form-text text-muted">
+                                <small class="form-text text-muted">
                                     Use values with up to two decimal positions, using a dot "."
                                 </small>
-                           </div>
+                            </div>
                             <div class="col-auto">
                                 <label>Currency</label>
                                 <select class="custom-select" name="currency" required>
@@ -37,7 +36,8 @@
                                     @endforeach
                                 </select>
                             </div>
-                             <div class="row mt-3">
+                        </div>
+                        <div class="row mt-3">
                             <div class="col">
                                 <label>
                                     Select the desired payment platform
@@ -72,16 +72,22 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
-                            <div class="text-center mt-3">
-
-                                    <button type="submit" id="payButton" class="btn btn-primary btn-lg">
-                                        {{ __('Pay') }}
-                                    </button>
-
+                        <div class="row">
+                            <div class="col-auto">
+                                <p class="border-bottom border-primary rounded">
+                                    @if (! optional(auth()->user())->hasActiveSubscription())
+                                        Would you like a discount every time?
+                                        <a href="{{ route('subscribe.show') }}">Subscribe</a>
+                                    @else
+                                        You get a <span class="font-weight-bold">10% off</span> as part of your subscription (this will be applied in the checkout).
+                                    @endif
+                                </p>
                             </div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button type="submit" id="payButton" class="btn btn-primary btn-lg">Pay</button>
+                        </div>
                     </form>
-
                 </div>
             </div>
         </div>
