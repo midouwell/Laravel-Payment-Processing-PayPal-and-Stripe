@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="row">
+                        <div class="row">
                             <div class="col-auto">
                                 <p class="border-bottom border-primary rounded">
                                     @if (! optional(auth()->user())->hasActiveSubscription())
@@ -83,7 +83,7 @@
                                     @endif
                                 </p>
                             </div>
-                        </div> --}}
+                        </div>
                         <div class="text-center mt-3">
                             <button type="submit" id="payButton" class="btn btn-primary btn-lg">Pay</button>
                         </div>

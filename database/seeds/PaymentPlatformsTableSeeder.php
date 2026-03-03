@@ -1,8 +1,6 @@
 <?php
 
-namespace Database\Seeders;
-
-use App\Models\PaymentPlatform;
+use App\PaymentPlatform;
 use Illuminate\Database\Seeder;
 
 class PaymentPlatformsTableSeeder extends Seeder
@@ -17,11 +15,13 @@ class PaymentPlatformsTableSeeder extends Seeder
         PaymentPlatform::create([
             'name' => 'PayPal',
             'image' => 'img/payment-platforms/paypal.jpg',
+            'subscriptions_enabled' => true
         ]);
 
         PaymentPlatform::create([
             'name' => 'Stripe',
             'image' => 'img/payment-platforms/stripe.jpg',
+            'subscriptions_enabled' => true
         ]);
     }
 }

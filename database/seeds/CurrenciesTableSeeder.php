@@ -1,11 +1,9 @@
 <?php
 
-namespace Database\Seeders;
-
+use App\Currency;
 use Illuminate\Database\Seeder;
-use App\Models\Currency;
 
-class PaymentCurrenciesTableSeeder extends Seeder
+class CurrenciesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +12,6 @@ class PaymentCurrenciesTableSeeder extends Seeder
      */
     public function run()
     {
-
         $currencies = [
             'usd',
             'eur',

@@ -1,6 +1,4 @@
-<small>You will be redirected to the Stripe checkout page.</small>
-
-{{-- @push('styles')
+@push('styles')
 <style type="text/css">
     .StripeElement {
       box-sizing: border-box;
@@ -82,4 +80,4 @@
         }
     });
 </script>
-@endpush --}}
+@endpush
